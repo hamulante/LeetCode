@@ -39,7 +39,7 @@ from
 where
 	e1.DepartmentId = d.Id 
 	and 3 > (select count(distinct e2.Salary) from Employee as e2 where e1.Salary < e2.Salary and e1.DepartmentId = e2.DepartmentId) 
-	-- 找出公司里前 3 高的薪水，意思是不超过三个值比这些值大
-	-- e1.Salary < e2.Salary 找出比选中的薪水更高的薪水
+	-- 找出公司里前 3 高的薪水，select语句是选出公司那些人工资比他高，
+	-- 如果本人是最高，那比我更高的人只有0个
 	-- 3 >：=3的话，代码的意思是从同部门中找到比当前薪水高的人有且仅有3人，那么说明当前薪水是第四高的薪水
 order by d.Name, e1.Salary desc;
